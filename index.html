@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anonymous Message</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #00ff00;
+      font-family: "Courier New", Courier, monospace;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #00ff00;
+    }
+
+    textarea, input {
+      width: 80%;
+      background-color: #111;
+      color: #00ff00;
+      border: 1px solid #00ff00;
+      font-family: "Courier New", Courier, monospace;
+      padding: 10px;
+      margin-top: 15px;
+    }
+
+    textarea {
+      height: 150px;
+      resize: none;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #000;
+      color: #00ff00;
+      border: 1px solid #00ff00;
+      font-family: "Courier New", Courier, monospace;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00ff00;
+      color: #000;
+      text-shadow: 0 0 5px #000;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #00aa00;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function(){
+      emailjs.init("y4SKGqW5eoHs_b9Jg");
+    })();
+  </script>
+</head>
+<body>
+  <h1>Anonymous Drop Box</h1>
+  <form id="messageForm">
+    <textarea name="message" placeholder="Type your anonymous message here..."></textarea><br>
+    <input type="email" name="user_email" placeholder="Your email (optional)"><br>
+    <button type="submit">Send Message</button>
+  </form>
+
+  <div class="footer">
+    <p>-.-. --- -- . / ..-. .. -. -.. / -- .</p>
+  </div>
+
+  <script>
+    document.getElementById("messageForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      emailjs.sendForm("service_ftp0bmj", "template_vea4jep", this)
+        .then(function() {
+          alert("Message sent successfully!");
+        }, function(error) {
+          alert("Failed to send message: " + JSON.stringify(error));
+        });
+    });
+  </script>
+</body>
+</html> 
